@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner</title>
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:wght@100..900&display=swap');
+    </style>
+    <style>
+        table {
+          font-family: 'Montserrat';
+          border-collapse: collapse;
+          margin-left: 50px;
+          margin-right: 0px;
+          margin-bottom: 20px;
+          width: 90%;
+          table-layout: auto;
+          position: fixed;
+          bottom: 0;
+
+ 
+
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 20px;
+          color: white;
+          height: 30px;
+          font-family: 'Montserrat';
+          font-size: 13px;
+          font-weight: bold;
+          font-style: italic;
+        }
+        
+        tr:nth-child(even) {
+          background-color:rgb(64, 0, 183);
+        }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="rightdiv">
+        <header class="header">Income</header>
+            <div class="container">
+                
+                <label class="incomelabel1">Salary</label>
+                <input type="text" id="salary" placeholder="0" class="sources">
+                
+            </div>
+            
+            <div class="container">
+                <label class="incomelabel1">Bonus/Stock</label>
+                <input type="number" id="bonus" placeholder="0" class="sources">
+            </div>
+
+
+            <div class="container">
+                <label class="incomelabel1">Tips</label>
+                <input type="number" id="tips" placeholder="0" class="sources">
+            </div>
+
+
+            <div class="container">
+                <label class="incomelabel1">Other</label>
+                <input type="number" id="other" placeholder="0" class="sources">
+            </div>
+
+
+            <div class="container">
+                <button class="sumbutton" onclick="addIncome()">Calculate</button>
+            </div>
+
+
+                <label class="incomelabel1">Total</label>
+                <input readonly="" type="text" class="totalbox" id="total">
+                <div class="chart-container">
+                    <canvas id="incomePieChart" width="400" height="400"></canvas>
+                </div>
+                
+        </div>
+
+
+    <div class="leftdiv">
+        <h1 class="header">Expenses</h1>
+            <div class="container">
+                <label class="expenseslabel1">Mortgage/Rent</label>
+                <input type="number" id="mortgage" class="sources" placeholder="0">
+            </div>
+
+
+            <div class="container">
+                <label class="expenseslabel1">Insurance</label>
+                <input type="number" id="insurance" class="sources" placeholder="0">
+            </div>
+
+
+            <div class="container">
+                <label class="expenseslabel1">Car</label>
+                <input type="number" id="car" class="sources" placeholder="0">
+            </div>
+
+
+            <div class="container">
+                <label class="expenseslabel1">Utilities</label>
+                <input type="number" id="utilities" class="sources" placeholder="0">
+            </div>
+            <div class="container">
+                <label class="expenseslabel1">Other</label>
+                <input type="number" id="expense5" class="sources" placeholder="0">
+            </div>
+            <div class="container">
+                <button class="sumbutton" onclick="addExpenses();takeHomePay()">Calculate</button>
+            </div>
+            <label class="incomelabel1">Total</label>
+                <input readonly="" type="text" class="totalbox" id="expensetotal">
+    </div>
+
+        <table>
+            <tr>
+                <th></th>
+                <th>January</th>
+                <th>February</th>
+                <th>March</th>
+                <th>April</th>
+                <th>May</th>
+                <th>June</th>
+                <th>July</th>
+                <th>August</th>
+                <th>September</th>
+                <th>October</th>
+                <th>November</th>
+                <th>December</th>
+                </div>
+            </tr>
+            <tr>
+                <td>Income</td>
+                <td id="inctablerow1"></td>
+                <td id="inctablerow2"></td>
+                <td id="inctablerow3"></td>
+                <td id="inctablerow4"></td>
+                <td id="inctablerow5"></td>
+                <td id="inctablerow6"></td>
+                <td id="inctablerow7"></td>
+                <td id="inctablerow8"></td>
+                <td id="inctablerow9"></td>
+                <td id="inctablerow10"></td>
+                <td id="inctablerow11"></td>
+                <td id="inctablerow12"></td>
+            </div>
+            </tr>
+            <tr>
+                <td>Expenses</td>
+                <td id="exptablerow1"></td>
+                <td id="exptablerow2"></td>
+                <td id="exptablerow3"></td>
+                <td id="exptablerow4"></td>
+                <td id="exptablerow5"></td>
+                <td id="exptablerow6"></td>
+                <td id="exptablerow7"></td>
+                <td id="exptablerow8"></td>
+                <td id="exptablerow9"></td>
+                <td id="exptablerow10"></td>
+                <td id="exptablerow11"></td>
+                <td id="exptablerow12"></td>
+            </div>
+            </tr>
+            <tr>
+                <td>Take-Home Pay</td>
+                <td id="takeHomePay1"></td>
+                <td id="takeHomePay2"></td>
+                <td id="takeHomePay3"></td>
+                <td id="takeHomePay4"></td>
+                <td id="takeHomePay5"></td>
+                <td id="takeHomePay6"></td>
+                <td id="takeHomePay7"></td>
+                <td id="takeHomePay8"></td>
+                <td id="takeHomePay9"></td>
+                <td id="takeHomePay10"></td>
+                <td id="takeHomePay11"></td>
+                <td id="takeHomePay12"></td>
+
+            </tr>
+            
+        </table>
+
+    <script src="index.js"></script>
+</body>
+</html>
